@@ -2,11 +2,11 @@ apiVersion: core.choreo.dev/v1beta1
 kind: ComponentConfig
 spec:
   inbound:
-    - name: YourService
+    - name: Gkcentral-stage API
       port: 8080
       type: REST
       networkVisibility: Public
-      context: /api
+      context: /create.php
       schemaFilePath: openapi.yaml
   outbound:
     serviceReferences:
