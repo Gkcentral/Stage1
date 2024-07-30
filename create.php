@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 
 // Replace these with your Freshdesk domain and API key
-$freshdesk_domain = "gkinternal.freshdesk.com";
+$freshdesk_domain = "gkinternal";
 $freshdesk_api_key = "6GC4LafS6xUpUzmPq9Fl";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,7 +41,7 @@ function createFreshdeskTicket($data, $domain, $api_key) {
 
     if ($http_status === 201) {
         $response_data = json_decode($response, true);
-        return ['ticket_id' => $response_data['id']];
+        return ['status' => ['success' => 'true'], 'data' => ['ticketId' => $response_data['id']]];
     } else {
         return ['error' => 'Failed to create ticket', 'status' => $http_status, 'response' => $response];
     }
