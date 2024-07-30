@@ -1,0 +1,163 @@
+---
+name: freshdesk-api
+description: A Choreo component for interacting with the Freshdesk API.
+version: 1.0.0
+visibility: private
+categories:
+  - integrations
+  - api
+  - ticketing
+  - customer-support
+  - freshdesk
+inputs:
+  - name: freshdesk_domain
+    type: string
+    description: The domain of your Freshdesk instance.
+    required: true
+  - name: freshdesk_api_key
+    type: string
+    description: Your Freshdesk API key.
+    required: true
+  - name: data
+    type: object
+    description: The data to be used in the API call.
+    required: true
+  - name: method
+    type: string
+    description: The HTTP method to use for the API call (e.g., POST, GET, PUT, DELETE).
+    default: POST
+  - name: path
+    type: string
+    description: The path to the Freshdesk API endpoint.
+    default: /api/v2/tickets
+outputs:
+  - name: response
+    type: object
+    description: The response from the Freshdesk API call.
+  - name: status
+    type: integer
+    description: The HTTP status code of the API call.
+  - name: error
+    type: string
+    description: An error message if the API call failed.
+  - name: data
+    type: object
+    description: The data returned by the Freshdesk API call.
+  - name: ticketId
+    type: string
+    description: The ID of the created ticket.
+    optional: true
+  - name: success
+    type: boolean
+    description: Whether the API call was successful.
+    optional: true
+actions:
+  - name: createTicket
+    description: Creates a new ticket in Freshdesk.
+    input:
+      - name: data
+        type: object
+        description: The data to be used in the API call.
+        required: true
+    output:
+      - name: response
+        type: object
+        description: The response from the Freshdesk API call.
+      - name: status
+        type: integer
+        description: The HTTP status code of the API call.
+      - name: error
+        type: string
+        description: An error message if the API call failed.
+      - name: data
+        type: object
+        description: The data returned by the Freshdesk API call.
+      - name: ticketId
+        type: string
+        description: The ID of the created ticket.
+        optional: true
+      - name: success
+        type: boolean
+        description: Whether the API call was successful.
+        optional: true
+  - name: getTicket
+    description: Retrieves a ticket from Freshdesk.
+    input:
+      - name: ticketId
+        type: string
+        description: The ID of the ticket to retrieve.
+        required: true
+    output:
+      - name: response
+        type: object
+        description: The response from the Freshdesk API call.
+      - name: status
+        type: integer
+        description: The HTTP status code of the API call.
+      - name: error
+        type: string
+        description: An error message if the API call failed.
+      - name: data
+        type: object
+        description: The data returned by the Freshdesk API call.
+  - name: updateTicket
+    description: Updates an existing ticket in Freshdesk.
+    input:
+      - name: ticketId
+        type: string
+        description: The ID of the ticket to update.
+        required: true
+      - name: data
+        type: object
+        description: The data to be used in the API call.
+        required: true
+    output:
+      - name: response
+        type: object
+        description: The response from the Freshdesk API call.
+      - name: status
+        type: integer
+        description: The HTTP status code of the API call.
+      - name: error
+        type: string
+        description: An error message if the API call failed.
+      - name: data
+        type: object
+        description: The data returned by the Freshdesk API call.
+  - name: deleteTicket
+    description: Deletes a ticket from Freshdesk.
+    input:
+      - name: ticketId
+        type: string
+        description: The ID of the ticket to delete.
+        required: true
+    output:
+      - name: response
+        type: object
+        description: The response from the Freshdesk API call.
+      - name: status
+        type: integer
+        description: The HTTP status code of the API call.
+      - name: error
+        type: string
+        description: An error message if the API call failed.
+  - name: listTickets
+    description: Lists all tickets in Freshdesk.
+    input:
+      - name: data
+        type: object
+        description: The data to be used in the API call.
+        required: true
+    output:
+      - name: response
+        type: object
+        description: The response from the Freshdesk API call.
+      - name: status
+        type: integer
+        description: The HTTP status code of the API call.
+      - name: error
+        type: string
+        description: An error message if the API call failed.
+      - name: data
+        type: object
+        description: The data returned by the Freshdesk API call.
