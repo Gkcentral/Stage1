@@ -6,7 +6,7 @@ spec:
       port: 8080
       type: REST
       networkVisibility: Public
-      context: /create.php
+      context: /api
       schemaFilePath: openapi.yaml
   outbound:
     serviceReferences:
